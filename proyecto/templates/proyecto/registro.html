@@ -1,0 +1,31 @@
+{% extends "proyecto/index.html" %}
+{% load staticfiles %}
+	
+{% block cuerpo %}
+	<script type="text/javascript">
+	function pintar(){
+		var lien=document.getElementById("lienzo");
+		var contexto=lien.getContext("2d");
+		var imagen=new Image();
+		imagen.src="{% static "proyecto/imagen/mapaColombia.jpg" %}";
+		contexto.drawImage(imagen,0,0,456,600);
+	}
+	</script>
+	<div class="row" >
+		<div class="span5" >
+			<form method="post" action="terminar/">{% csrf_token %}
+			
+				<p>Nombre de la ciudad</p> <input name="nombre" type="text" placeholder="nombre" style="height:40px;"><br/>
+				coordenada x: <input type="text" id ="cordX" name="cordX" /><br/>
+				coordenada y: <input type="text" id="cordY" name="cordY" /><br/>
+				<div class="btn btn-info" onclick="pintar();" >Ubicar en el mapa</div><br/><br/>
+				<button class="btn btn-danger" type="submit">REGISTRAR</button>
+			</form>
+		</div>
+		<div class="span7" >
+			<canvas id="lienzo" onclick="ubicar(event);" width=456px height=600px >
+				tu navegador no soporta canvas
+			</canvas>
+		</div>
+	</div>
+{%  endblock %}
