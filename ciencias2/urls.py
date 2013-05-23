@@ -7,8 +7,8 @@ from proyecto import views
 
 urlpatterns = patterns('',
     url(r'^$',views.index,name="index"),
-    url(r'^proyecto/registro/',views.registro ,name="registro"),
-    url(r'^proyecto/registro/terminar/(<?P<nom>[a-zA-Z]+)/(?P<cordx>\d+)/(?P<cordy>\d+)',views.registrar),
+    url(r'^proyecto/registro/$',views.registro ,name="registro"),
+    url(r'^terminar/$',views.registro),
     # Examples:
     # url(r'^$', 'ciencias2.views.home', name='home'),
     # url(r'^ciencias2/', include('ciencias2.foo.urls')),

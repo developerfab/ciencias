@@ -16,16 +16,17 @@ def index(requests):
 Esta funcion retorna el sitio para registrar un nodo
 """
 def registro(requests):
-           
+    
     dic={'bienvenido':'Transportes mi pais'}
+    if requests.method == 'POST':
+        print 'entra'
+        nombre=requests.POST['nombre'] 
+        x=int(requests.POST['cordX'])
+        y=int(requests.POST['cordY'])
+        print x
+        print y 
+        print nombre
     return render(requests,'proyecto/registro.html',dic)
 
-def registrar(requests):
-    print 'entra'
-    nombre=requests.POST['nom'] 
-    x=int(requests.POST['cordx'])
-    y=int(requests.POST['cordy'])
-    print x
-    print y 
-    print nombre
+    
     
